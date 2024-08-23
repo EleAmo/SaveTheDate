@@ -26,16 +26,44 @@
             font-size: 1.5em;
             font-weight: bold;
             z-index: 1000; /* Assure que la bannière reste au-dessus des autres éléments */
+            text-align: center;
         }
 
         /* Contenu sous la bannière */
         .content {
             margin-top: 15vh; /* Pour compenser la hauteur de la bannière */
             display: flex;
+            flex-direction: column;
+            align-items: center; /* Centre horizontalement les éléments */
+            justify-content: center; /* Centre verticalement les éléments */
+            height: calc(85vh - 40px); /* Hauteur ajustée en fonction de la marge et du bouton */
+            padding: 20px;
+            position: relative; /* Position pour superposer l'image d'arrière-plan */
+            background-image: url('Nous2.jpg'); /* Image d'arrière-plan */
+            background-size: cover; /* Couvre toute la zone */
+            background-position: center; /* Centre l'image */
+        }
+
+        /* Superposition semi-transparente pour l'image d'arrière-plan */
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Couleur blanche semi-transparente */
+            z-index: 1; /* Place la superposition au-dessus de l'image mais en dessous du contenu */
+        }
+
+        /* Conteneur pour les boutons d'image */
+        .buttons-container {
+            display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px; /* Espace entre les images */
-            padding: 20px;
+            gap: 20px; /* Espace entre les images */
+            position: relative;
+            z-index: 2; /* Assure que les boutons sont au-dessus de la superposition */
         }
 
         /* Styles pour les boutons d'image */
@@ -44,7 +72,8 @@
             height: 150px;
             overflow: hidden;
             border-radius: 8px; /* Coins arrondis */
-            transition: transform 0.3s; /* Effet de transition au survol */
+            transition: transform 0.3s ease-in-out; /* Effet de transition au survol */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour effet 3D */
         }
 
         .button img {
@@ -64,6 +93,39 @@
             height: 100%;
             text-decoration: none;
         }
+
+        /* Bouton de confirmation */
+        .confirm-button {
+            margin-top: 20px; /* Espacement au-dessus du bouton */
+            padding: 10px 20px; /* Espacement intérieur du bouton */
+            background-color: #90ee90; /* Couleur verte claire */
+            color: white;
+            border: none;
+            border-radius: 25px; /* Coins arrondis */
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Effet de transition pour la couleur */
+            position: relative;
+            z-index: 2; /* Assure que le bouton est au-dessus de la superposition */
+        }
+
+        .confirm-button:hover {
+            background-color: #76c7c0; /* Changement de couleur au survol */
+        }
+
+        /* Styles pour le compte à rebours */
+        .countdown {
+            position: fixed;
+            bottom: 20px; /* Espacement du bas */
+            right: 20px; /* Espacement de la droite */
+            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px; /* Coins arrondis */
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 1000; /* Assure que le compte à rebours est au-dessus des autres éléments */
+        }
     </style>
 </head>
 <body>
@@ -75,27 +137,63 @@
 
     <!-- Contenu sous la bannière -->
     <div class="content">
-        <div class="button">
-            <a href="page1.html">
-                <img src="Moi.jpg" alt="Bouton 1">
-            </a>
+        <!-- Conteneur pour les boutons d'image -->
+        <div class="buttons-container">
+            <div class="button">
+                <a href="page1.html">
+                    <img src="Moi.jpg" alt="Bouton 1">
+                </a>
+            </div>
+            <div class="button">
+                <a href="page2.html">
+                    <img src="corporate.jpg" alt="Bouton 2">
+                </a>
+            </div>
+            <div class="button">
+                <a href="page3.html">
+                    <img src="Image02.png" alt="Bouton 3">
+                </a>
+            </div>
+            <div class="button">
+                <a href="page4.html">
+                    <img src="b04.png" alt="Bouton 4">
+                </a>
+            </div>
         </div>
-        <div class="button">
-            <a href="page2.html">
-                <img src="corporate.jpg" alt="Bouton 2">
-            </a>
-        </div>
-        <div class="button">
-            <a href="page3.html">
-                <img src="Image02.png" alt="Bouton 3">
-            </a>
-        </div>
-        <div class="button">
-            <a href="page4.html">
-                <img src="b04.png" alt="Bouton 4">
-            </a>
-        </div>
+        <!-- Bouton de confirmation avec lien vers Google Form -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJzYQvLg8zZ9MZz0yjxJmHEM3Bh4gHxSznA3RthWkBTk0F1g/viewform" target="_blank" class="confirm-button">Confirmer votre présence</a>
     </div>
+
+    <!-- Compte à rebours -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Script pour le compte à rebours -->
+    <script>
+        // Définir la date cible
+        const targetDate = new Date('2026-07-04T00:00:00').getTime();
+
+        // Mettre à jour le compte à rebours chaque seconde
+        const interval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculer le temps restant
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Afficher le résultat dans l'élément HTML
+            document.getElementById('countdown').innerHTML =
+                days + "j " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Lorsque le compte à rebours est terminé
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
