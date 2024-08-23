@@ -3,49 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save the date</title>
-    <!-- Lien vers Google Fonts pour la police manuscrite -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
-   <style>
-        /* Styles CSS internes */
-        header {
-            height: auto; /* Laisser l'image définir la hauteur */
-            position: relative;
-            display: inline-block; /* Pour que le header prenne la taille de l'image */
+    <title>Page avec Bannière et Boutons</title>
+    <style>
+        /* Styles globaux */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-        header img {
-            display: block; /* Assure que l'image est affichée comme un bloc */
-        }
-        .title-container {
-            position: absolute;
+
+        /* Bannière fixe en haut */
+        .banner {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 15vh; /* 15% de la hauteur de la fenêtre */
+            background-color: #333; /* Couleur de fond de la bannière */
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
+            font-size: 1.5em;
+            font-weight: bold;
+            z-index: 1000; /* Assure que la bannière reste au-dessus des autres éléments */
         }
-        h1 {
-            margin: 0;
-            text-align: center;
-            color: rgb(255, 215, 0); /* Couleur dorée en RGB */
-            font-family: 'Pacifico', cursive; /* Police manuscrite */
+
+        /* Contenu sous la bannière */
+        .content {
+            margin-top: 15vh; /* Pour compenser la hauteur de la bannière */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Espace entre les images */
+            padding: 20px;
+        }
+
+        /* Styles pour les boutons d'image */
+        .button {
+            width: 150px; /* Taille des images */
+            height: 150px;
+            overflow: hidden;
+            border-radius: 8px; /* Coins arrondis */
+            transition: transform 0.3s; /* Effet de transition au survol */
+        }
+
+        .button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Assure que l'image couvre le conteneur sans distorsion */
+        }
+
+        .button:hover {
+            transform: scale(1.1); /* Zoom léger au survol */
+        }
+
+        /* Styles pour les liens */
+        .button a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Bandeau en haut avec un titre en italique gras, une image de fond, et une superposition -->
-    <header>
-        <!-- Superposition semi-transparente -->
-        <div class="overlay"></div>
-        <!-- Titre avec positionnement centré -->
-        <div class="title-container">
-            <h1><strong><em>Save the date</em></strong></h1>
+    <!-- Bannière en haut -->
+    <div class="banner">
+        Bannière Fixe
+    </div>
+
+    <!-- Contenu sous la bannière -->
+    <div class="content">
+        <div class="button">
+            <a href="page1.html">
+                <img src="b01.png" alt="Bouton 1">
+            </a>
         </div>
-    </header>
+        <div class="button">
+            <a href="page2.html">
+                <img src="b02.png" alt="Bouton 2">
+            </a>
+        </div>
+        <div class="button">
+            <a href="page3.html">
+                <img src="b03.png" alt="Bouton 3">
+            </a>
+        </div>
+        <div class="button">
+            <a href="page4.html">
+                <img src="b04.png" alt="Bouton 4">
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>
