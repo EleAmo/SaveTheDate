@@ -1,23 +1,23 @@
 /* styles.css */
 body {
     font-family: 'Patrick Hand', sans-serif;
-    background-color: red;
-    color: #333;
+    background: url('Image01.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #333;
 }
 
+/* Appliquer la transparence à l'ensemble du contenu */
 .container {
-    max-width: 600px;
-    text-align: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
     padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
