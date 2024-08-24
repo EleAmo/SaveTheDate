@@ -115,7 +115,7 @@ html, body {
 
 /* Texte centré */
 .centered-text {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     color: palegoldenrod;
     font-family: 'Great Vibes', cursive;
     font-size: 2em;
@@ -129,7 +129,7 @@ html, body {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     justify-items: center;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 40px; /* Espace ajusté pour aligner avec le compte à rebours */
     z-index: 2;
 }
