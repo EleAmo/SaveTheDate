@@ -116,9 +116,9 @@ html, body {
 /* Texte centré */
 .centered-text {
     margin-bottom: 0px;
-    color: palegoldenrod;
+    color: #ba9991;
     font-family: 'Great Vibes', cursive;
-    font-size: 2em;
+    font-size: 30px;
     z-index: 2;
     text-align: center;
 }
@@ -127,10 +127,10 @@ html, body {
 .buttons-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 40px;
     justify-items: center;
     margin-top: 0px;
-    margin-bottom: 40px; /* Espace ajusté pour aligner avec le compte à rebours */
+    margin-bottom: 100px; /* Espace ajusté pour aligner avec le compte à rebours */
     z-index: 2;
 }
 
@@ -195,7 +195,7 @@ html, body {
     .buttons-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        margin-bottom: 40px; /* Ajuste la marge en bas pour petits écrans */
+        margin-bottom: 0px; /* Ajuste la marge en bas pour petits écrans */
     }
 
     .button {
