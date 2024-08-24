@@ -195,7 +195,7 @@ html, body {
     .buttons-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        margin-bottom: 20px; /* Ajuste la marge en bas pour petits écrans */
+        margin-bottom: 40px; /* Ajuste la marge en bas pour petits écrans */
     }
 
     .button {
