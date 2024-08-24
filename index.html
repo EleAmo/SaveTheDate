@@ -3,165 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page avec Bannière et Boutons</title>
-    <style>
-        /* Styles globaux */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Bannière fixe en haut */
-        .banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 15vh; /* 15% de la hauteur de la fenêtre */
-            background-color: #333; /* Couleur de fond de la bannière */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            z-index: 1000; /* Assure que la bannière reste au-dessus des autres éléments */
-            text-align: center;
-        }
-
-        /* Contenu sous la bannière */
-        .content {
-            margin-top: 15vh; /* Pour compenser la hauteur de la bannière */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centre horizontalement les éléments */
-            justify-content: center; /* Centre verticalement les éléments */
-            height: calc(85vh - 40px); /* Hauteur ajustée en fonction de la marge et du bouton */
-            padding: 20px;
-            position: relative; /* Position pour superposer l'image d'arrière-plan */
-            background-image: url('Nous2.jpg'); /* Image d'arrière-plan */
-            background-size: cover; /* Couvre toute la zone */
-            background-position: center; /* Centre l'image */
-        }
-
-        /* Superposition semi-transparente pour l'image d'arrière-plan */
-        .content::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.5); /* Couleur blanche semi-transparente */
-            z-index: 1; /* Place la superposition au-dessus de l'image mais en dessous du contenu */
-        }
-
-        /* Conteneur pour les boutons d'image */
-        .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px; /* Espace entre les images */
-            position: relative;
-            z-index: 2; /* Assure que les boutons sont au-dessus de la superposition */
-        }
-
-        /* Styles pour les boutons d'image */
-        .button {
-            width: 150px; /* Taille des images */
-            height: 150px;
-            overflow: hidden;
-            border-radius: 8px; /* Coins arrondis */
-            transition: transform 0.3s ease-in-out; /* Effet de transition au survol */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour effet 3D */
-        }
-
-        .button img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Assure que l'image couvre le conteneur sans distorsion */
-        }
-
-        .button:hover {
-            transform: scale(1.1); /* Zoom léger au survol */
-        }
-
-        /* Styles pour les liens */
-        .button a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-        }
-
-        /* Bouton de confirmation */
-        .confirm-button {
-            margin-top: 20px; /* Espacement au-dessus du bouton */
-            padding: 10px 20px; /* Espacement intérieur du bouton */
-            background-color: #90ee90; /* Couleur verte claire */
-            color: white;
-            border: none;
-            border-radius: 25px; /* Coins arrondis */
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Effet de transition pour la couleur */
-            position: relative;
-            z-index: 2; /* Assure que le bouton est au-dessus de la superposition */
-        }
-
-        .confirm-button:hover {
-            background-color: #76c7c0; /* Changement de couleur au survol */
-        }
-
-        /* Styles pour le compte à rebours */
-        .countdown {
-            position: fixed;
-            bottom: 20px; /* Espacement du bas */
-            right: 20px; /* Espacement de la droite */
-            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px; /* Coins arrondis */
-            font-size: 1.2em;
-            font-weight: bold;
-            z-index: 1000; /* Assure que le compte à rebours est au-dessus des autres éléments */
-        }
-    </style>
+    <title>Nous nous marrions!</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Bannière en haut -->
     <div class="banner">
-        Bannière Fixe
+        <img src="Menu100px.png" alt="Menu" class="menu-icon">
+        <img src="LogoDraft.png" alt="Logo" class="logo-center">
+        <img src="padlock.png" alt="Padlock" class="padlock-button">
     </div>
 
+    <!-- Menu déroulant -->
+    <nav class="dropdown-menu">
+        <ul>
+            <li><a href="NotreHistoire.html">Notre histoire</a></li>
+            <li><a href="LaDate.html">La date</a></li>
+            <li><a href="LeLieu.html">Le lieu</a></li>            
+            <li><a href="LeMariage.html">Le mariage</a></li>
+            <li><a href="LesTemoins.html">Les témoins</a></li>
+            <li><a href="LesInfosPratiques.html">Les infos pratiques</a></li>
+        </ul>
+    </nav>
+    
     <!-- Contenu sous la bannière -->
     <div class="content">
+        
+            <!-- Texte centré -->
+        <div class="centered-text">
+            <h1>Nous nous marrions!</h1>
+        </div>
+        
+        
         <!-- Conteneur pour les boutons d'image -->
         <div class="buttons-container">
             <div class="button">
-                <a href="page1.html">
-                    <img src="Moi.jpg" alt="Bouton 1">
+                <a href="NotreHistoire.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="NotreHistoire2.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                </a>
+            </div>
+            
+            <div class="button">
+                <a href="LaDate.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="LaDate.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
                 </a>
             </div>
             <div class="button">
-                <a href="page2.html">
-                    <img src="corporate.jpg" alt="Bouton 2">
+                <a href="LeLieu.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="LeLieu.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
                 </a>
             </div>
             <div class="button">
-                <a href="page3.html">
-                    <img src="Image02.png" alt="Bouton 3">
+                <a href="LeMariage.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="LeMariage.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
                 </a>
             </div>
             <div class="button">
-                <a href="page4.html">
-                    <img src="b04.png" alt="Bouton 4">
+                <a href="LesTemoins.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="LesTémoins.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                </a>
+            </div>
+            <div class="button">
+                <a href="LesInfos.html">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <source src="LesInfos.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
                 </a>
             </div>
         </div>
-        <!-- Bouton de confirmation avec lien vers Google Form -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJzYQvLg8zZ9MZz0yjxJmHEM3Bh4gHxSznA3RthWkBTk0F1g/viewform" target="_blank" class="confirm-button">Confirmer votre présence</a>
+        <!-- Bouton de confirmation avec lien vers Google Form
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJzYQvLg8zZ9MZz0yjxJmHEM3Bh4gHxSznA3RthWkBTk0F1g/viewform" target="_blank" class="confirm-button">Confirmer votre présence</a> -->
     </div>
 
     <!-- Compte à rebours -->
@@ -181,11 +110,11 @@
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            //const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Afficher le résultat dans l'élément HTML
             document.getElementById('countdown').innerHTML =
-                days + "j " + hours + "h " + minutes + "m " + seconds + "s ";
+                days + "j " + hours + "h " + minutes + "m "; //+ seconds + "s ";
 
             // Lorsque le compte à rebours est terminé
             if (distance < 0) {
@@ -194,6 +123,13 @@
             }
         }, 1000);
     </script>
-
+    
+    <script>
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+        const menu = document.querySelector('.dropdown-menu');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+</script>
+    
 </body>
 </html>

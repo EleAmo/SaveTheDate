@@ -1,98 +1,215 @@
-/* styles.css */
-body {
-    font-family: 'Patrick Hand', sans-serif;
-    background: url('Image01.png') no-repeat center center fixed;
-    background-size: cover;
+/* Styles globaux */
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    overflow: hidden; /* Supprime la barre de défilement verticale */
+    font-family: Arial, sans-serif;
+}
+
+/* Bannière fixe en haut */
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: #333;
+    justify-content: center;
+    z-index: 1000;
 }
 
-/* Appliquer la transparence à l'ensemble du contenu */
-.container {
-    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+.menu-icon {
+    position: absolute;
+    left: 20px;
+    height: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #5a5a5a;
+.menu-icon:hover {
+    transform: scale(1.1);
 }
 
-header p {
-    font-size: 18px;
-    color: #777;
+.logo-center {
+    max-height: 80%;
+    max-width: 80%;
+    position: relative;
 }
 
-.details {
-    margin-top: 30px;
+.padlock-button {
+    position: absolute;
+    right: 20px;
+    height: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
-.details h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #5a5a5a;
+.padlock-button:hover {
+    transform: scale(1.1);
 }
 
-.rsvp {
-    margin-top: 30px;
+/* Menu déroulant */
+.dropdown-menu {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    background-color: rgba(51, 51, 51, 0.9);
+    width: 200px;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
 }
 
-.rsvp h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #5a5a5a;
+.dropdown-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.rsvp-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
+.dropdown-menu li {
+    padding: 10px;
+    text-align: center;
+}
+
+.dropdown-menu li a {
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+}
+
+.dropdown-menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Contenu sous la bannière */
+.content {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 10vh); /* Prend tout l'espace disponible sous la bannière */
+    padding: 20px;
+    position: relative;
+    background-image: url('Fond.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Assure que rien ne dépasse */
+}
+
+/* Superposition semi-transparente */
+.content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+/* Texte centré */
+.centered-text {
+    margin-bottom: 20px;
+    color: palegoldenrod;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Conteneur pour les boutons d'image */
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
     margin-top: 10px;
+    margin-bottom: 40px; /* Espace ajusté pour aligner avec le compte à rebours */
+    z-index: 2;
 }
 
-.rsvp-button:hover {
-    background-color: #0056b3;
-}
-
-footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #777;
-}
-
-/* Appliquer une animation flottante aux images */
-.dynamic-images img {
+/* Styles pour les boutons d'image */
+.button {
     width: 150px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    animation: float 3s ease-in-out infinite;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Animation flottante */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+.button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* Ajouter un effet de zoom et de surbrillance au survol */
-.dynamic-images img:hover {
+.button:hover {
     transform: scale(1.1);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Compte à rebours */
+.countdown {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+/* Styles réactifs pour les petits écrans */
+@media (max-width: 600px) {
+    .banner {
+        height: 12vh;
+    }
+
+    .logo-center {
+        max-height: 60%;
+        max-width: 60%;
+    }
+
+    .padlock-button,
+    .menu-icon {
+        height: 40%;
+    }
+
+    .content {
+        height: calc(100vh - 12vh); /* Ajustement pour petits écrans */
+    }
+
+    .centered-text {
+        font-size: 1.5em;
+    }
+
+    .buttons-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 20px; /* Ajuste la marge en bas pour petits écrans */
+    }
+
+    .button {
+        width: 120px;
+        height: 120px;
+    }
+
+    .confirm-button {
+        margin-top: 15px;
+        font-size: 0.9em;
+    }
+
+    .countdown {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
 }
