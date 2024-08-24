@@ -195,15 +195,15 @@ html, body {
     }
 
     .centered-text {
-        font-size: 1.5em;
-        margin-bottom: 10px; /* Réduit l'espace sous le texte */
+        font-size: 15px;
+        margin-bottom: 0px; /* Réduit l'espace sous le texte */
     }
 
     .buttons-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px; /* Réduit l'espace entre les boutons */
-        margin-top: 10px; /* Réduit l'espace au-dessus des boutons */
-        margin-bottom: 20px; /* Réduit l'espace en bas avant le compte à rebours */
+        margin-top: 0px; /* Réduit l'espace au-dessus des boutons */
+        margin-bottom: 100px; /* Réduit l'espace en bas avant le compte à rebours */
     }
 
     .button {
