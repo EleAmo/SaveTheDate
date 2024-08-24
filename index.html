@@ -99,7 +99,7 @@
     <!-- Script pour le compte à rebours -->
     <script>
         // Définir la date cible
-        const targetDate = new Date('2026-07-04T00:00:00').getTime();
+        const targetDate = new Date('2026-07-04T15:00:00').getTime();
 
         // Mettre à jour le compte à rebours chaque seconde
         const interval = setInterval(function() {
@@ -110,7 +110,7 @@
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            //const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Afficher le résultat dans l'élément HTML
             document.getElementById('countdown').innerHTML =
