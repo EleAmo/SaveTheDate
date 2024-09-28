@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nous nous marrions!</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Bannière en haut -->
+    <div class="banner">
+        <img src="Menu100px.png" alt="Menu" class="menu-icon" id="menu-toggle">
+        <img src="SITE_WEB_PNG_46X18MM.png" alt="Logo" class="logo-center">
+        <!--<img src="padlock.png" alt="Padlock" class="padlock-button">-->
+    </div>
+
+    <!-- Menu déroulant -->
+    <nav class="dropdown-menu">
+        <ul>
+            <li><a href="NotreHistoire.html">Notre histoire</a></li>
+            <li><a href="LaDate.html">La date</a></li>
+            <li><a href="LeLieu.html">Le lieu</a></li>            
+            <li><a href="LeMariage.html">Le mariage</a></li>
+            <li><a href="LesTemoins.html">Les témoins</a></li>
+            <li><a href="LesInfosPratiques.html">Les infos pratiques</a></li>
+        </ul>
+    </nav>
+
+    <!-- Formulaire de mot de passe -->
+    <div class="password-form">
+        <h2>Entrez le mot de passe</h2>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button id="submit-password">Valider</button>
+        <button id="cancel-password">Annuler</button>
+    </div>
+    
+    <!-- Contenu sous la bannière -->
+    <div class="content">
+        <!-- Texte centré -->
+        <div class="centered-text">
+            <h1>Psssss...</h1>
+            <h1>Nous nous marrions!</h1>
+            <h1>Le 04 Juillet 2026</h1>
+        </div>
+        <div class="centered-text">
+            <h2>Save the date pour une petite chouille!</h2>
+            <p>Plus d'infos à venir ici, stay tuned!</p>
+        </div>
+    </div>
+
+    <!-- Compte à rebours -->
+    <div class="countdown" id="countdown"></div>
+    
+    <!-- Bouton en bas à gauche -->
+    <button class="bottom-left-button" id="open-calendar-modal">Ajouter à mon calendrier</button>
+    
+    <!-- Fenêtre modale pour ajouter à un calendrier -->
+    <div class="calendar-modal" id="calendarModal">
+        <h2>Ajouter à votre calendrier</h2>
+        <button class="calendar-option" id="googleCalendar">Google Calendar</button>
+        <button class="calendar-option" id="outlookCalendar">Outlook Calendar</button>
+        <button class="calendar-option" id="icsCalendar">Fichier ICS</button>
+        <button class="calendar-option" id="closeCalendarModal">Fermer</button>
+    </div>
+
+
+
+
+    <!-- Script pour le compte à rebours -->
+    <script>
+        // Définir la date cible
+        const targetDate = new Date('2026-07-04T13:00:00').getTime();
+
+        // Mettre à jour le compte à rebours chaque seconde
+        const interval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculer le temps restant
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Afficher le résultat dans l'élément HTML
+            document.getElementById('countdown').innerHTML =
+                days + "j " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Lorsque le compte à rebours est terminé
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+    
+<script>
+    // Ouvrir la fenêtre modale
+    document.getElementById('open-calendar-modal').addEventListener('click', function() {
+        document.getElementById('calendarModal').style.display = 'flex';
+    });
+
+    // Fermer la fenêtre modale
+    document.getElementById('closeCalendarModal').addEventListener('click', function() {
+        document.getElementById('calendarModal').style.display = 'none';
+    });
+
+    // Google Calendar
+    document.getElementById('googleCalendar').addEventListener('click', function() {
+        window.open("https://www.google.com/calendar/render?action=TEMPLATE&text=Mariage Eléonore et Amory!&dates=20260704T130000Z/20260704T230000Z&details=Mariage Eléonore et Amory&location=Lieu à préciser&hl=fr", "_blank");
+    });
+
+    // Outlook Calendar
+    document.getElementById('outlookCalendar').addEventListener('click', function() {
+        window.open("https://outlook.live.com/calendar/0/deeplink/compose?subject=Mariage Eléonore et Amory!&startdt=2026-07-04T13:00:00Z&enddt=2026-07-04T23:00:00Z&body=Mariage Eléonore et Amory&location=Lieu à préciser", "_blank");
+    });
+
+    // Fichier ICS
+    document.getElementById('icsCalendar').addEventListener('click', function() {
+        window.location.href = "SaveTheDate.ics"; // Assurez-vous que le chemin est correct
+    });
+
+</script>
+
+    
+        <!-- Script pour basculer l'affichage du menu -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.dropdown-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none'; // Masquer le menu s'il est affiché
+            } else {
+                menu.style.display = 'flex'; // Afficher le menu s'il est caché
+            }
+        });
+    </script>
+    
+<script>
+    // Définir le hachage SHA-256 du mot de passe '#LaChouille'
+    const hashedPassword = 'C9A60B2F33524DBB2EACFA70CE136746A2FA710C48E41E4A52429DAA237AF815'; // Le hachage SHA-256 pré-calculé
+
+    // Vérifiez si le mot de passe a déjà été saisi correctement
+    if (sessionStorage.getItem('passwordVerified') === 'true') {
+        // Si le mot de passe a déjà été saisi correctement, débloquez les boutons et le menu, et cachez le cadenas
+        document.querySelector('.buttons-container').style.pointerEvents = 'auto';
+        document.querySelector('.dropdown-menu').style.pointerEvents = 'auto';
+        document.querySelector('.padlock-button').style.display = 'none';
+    } else {
+        // Si le mot de passe n'a pas encore été saisi correctement, bloquez les boutons et le menu
+        document.querySelector('.buttons-container').style.pointerEvents = 'none';
+        document.querySelector('.dropdown-menu').style.pointerEvents = 'none';
+    }
+
+    document.querySelector('.menu-icon').addEventListener('click', function() {
+        const menu = document.querySelector('.dropdown-menu');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.querySelector('.padlock-button').addEventListener('click', function() {
+        const passwordForm = document.querySelector('.password-form');
+        passwordForm.style.display = passwordForm.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.getElementById('submit-password').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password').value;
+        const crypto = window.crypto || window.msCrypto; // Pour les anciens navigateurs
+        if (crypto && crypto.subtle) {
+            crypto.subtle.digest('SHA-256', new TextEncoder().encode(passwordInput)).then(function(hash) {
+                // Convertir le résultat en chaîne hexadécimale
+                const hashArray = Array.from(new Uint8Array(hash));
+                const hashHex = hashArray.map(byte => byte.toString(16).toUpperCase().padStart(2, '0')).join('');
+                
+                // Log pour déboguer
+                console.log('Password Entered:', passwordInput);
+                console.log('Hash Computed:', hashHex);
+                console.log('Expected Hash:', hashedPassword);
+
+                // Comparer le hachage avec celui du mot de passe
+                if (hashHex === hashedPassword) {
+                    sessionStorage.setItem('passwordVerified', 'true');
+                    document.querySelector('.password-form').style.display = 'none';
+                    document.querySelector('.buttons-container').style.pointerEvents = 'auto';
+                    document.querySelector('.dropdown-menu').style.pointerEvents = 'auto';
+                    document.querySelector('.padlock-button').style.display = 'none'; // Cachez le cadenas
+                } else {
+                    alert('Mot de passe incorrect');
+                }
+            });
+        } else {
+            alert('Votre navigateur ne supporte pas les fonctionnalités nécessaires pour vérifier le mot de passe.');
+        }
+    });
+
+    document.getElementById('cancel-password').addEventListener('click', function() {
+        document.querySelector('.password-form').style.display = 'none';
+    });
+</script>
+
+
+
+    
+</body>
+</html>
