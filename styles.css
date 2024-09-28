@@ -399,7 +399,7 @@ video {
     }
 
     .bottom-left-button {
-        margin-bottom: 10px; /* Marge entre le bouton et le compte à rebours */
+        margin-bottom: 30px; /* Marge entre le bouton et le compte à rebours */
     }   
 
     .countdown {
