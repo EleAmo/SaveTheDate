@@ -201,6 +201,23 @@ html, body {
     transform: scale(1.1);
 }
 
+
+
+
+/* Conteneur pour le bouton et le compte à rebours */
+.bottom-container {
+    position: fixed; /* Reste en bas de la page */
+    bottom: 20px; /* Marge à partir du bas de la page */
+    left: 0;
+    right: 0; /* Élargit le conteneur pour s'étendre sur toute la largeur */
+    display: flex; /* Utilise flexbox pour l'alignement */
+    justify-content: space-between; /* Espacement entre les éléments */
+    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
+    z-index: 1000; /* Assure que le conteneur est au-dessus des autres éléments */
+}
+
+
+
 /* Compte à rebours */
 .countdown {
     position: fixed;
@@ -374,6 +391,16 @@ video {
         width: 120px;
         height: 120px;
     }
+
+    .bottom-container {
+        flex-direction: column; /* Passe en colonne sur petits écrans */
+        align-items: center; /* Centre horizontalement les enfants */
+        bottom: 10px; /* Ajuste la marge du bas */
+    }
+
+    .bottom-left-button {
+        margin-bottom: 10px; /* Marge entre le bouton et le compte à rebours */
+    }   
 
     .countdown {
         font-size: 1em;
