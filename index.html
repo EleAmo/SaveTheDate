@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nous nous marrions!</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <title>Save the date!</title>
+    <link rel="stylesheet" href="styles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -49,11 +49,11 @@
     </div>
     
 
-        <!-- Bouton en bas à gauche -->
-        <button class="bottom-left-button" id="open-calendar-modal">Ajouter au calendrier</button>
+    <!-- Bouton en bas à gauche -->
+    <button class="bottom-left-button" id="open-calendar-modal">Ajouter au calendrier</button>
 
-        <!-- Compte à rebours -->
-        <div class="countdown" id="countdown"></div>
+    <!-- Compte à rebours -->
+    <div class="countdown" id="countdown"></div>
 
     
 
@@ -70,27 +70,26 @@
 
 
 
-    <!-- Script pour le compte à rebours -->
+    <!-- Script compte à rebours -->
     <script>
-        // Définir la date cible
+        //date cible
         const targetDate = new Date('2026-07-04T13:00:00').getTime();
 
-        // Mettre à jour le compte à rebours chaque seconde
         const interval = setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            // Calculer le temps restant
+            //temps restant
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Afficher le résultat dans l'élément HTML
+            // Affichage
             document.getElementById('countdown').innerHTML =
                 days + "j " + hours + "h " + minutes + "m " + seconds + "s ";
 
-            // Lorsque le compte à rebours est terminé
+            // deadline
             if (distance < 0) {
                 clearInterval(interval);
                 document.getElementById('countdown').innerHTML = "EXPIRED";
@@ -99,12 +98,9 @@
     </script>
     
 <script>
-    // Ouvrir la fenêtre modale
     document.getElementById('open-calendar-modal').addEventListener('click', function() {
         document.getElementById('calendarModal').style.display = 'flex';
     });
-
-    // Fermer la fenêtre modale
     document.getElementById('closeCalendarModal').addEventListener('click', function() {
         document.getElementById('calendarModal').style.display = 'none';
     });
@@ -127,30 +123,30 @@
 </script>
 
     
-        <!-- Script pour basculer l'affichage du menu -->
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.querySelector('.dropdown-menu');
-            if (menu.style.display === 'flex') {
-                menu.style.display = 'none'; // Masquer le menu s'il est affiché
-            } else {
-                menu.style.display = 'flex'; // Afficher le menu s'il est caché
-            }
-        });
-    </script>
+<!--affichage du menu -->
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const menu = document.querySelector('.dropdown-menu');
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none'; 
+        } else {
+            menu.style.display = 'flex'; 
+        }
+    });
+</script>
     
 <script>
-    // Définir le hachage SHA-256 du mot de passe '#LaChouille'
-    const hashedPassword = 'C9A60B2F33524DBB2EACFA70CE136746A2FA710C48E41E4A52429DAA237AF815'; // Le hachage SHA-256 pré-calculé
+    // Définir le hachage SHA-256 du mot de passe
+    const hashedPassword = 'C9A60B2F33524DBB2EACFA70CE136746A2FA710C48E41E4A52429DAA237AF815'; 
 
     // Vérifiez si le mot de passe a déjà été saisi correctement
     if (sessionStorage.getItem('passwordVerified') === 'true') {
-        // Si le mot de passe a déjà été saisi correctement, débloquez les boutons et le menu, et cachez le cadenas
+            //deblock
         document.querySelector('.buttons-container').style.pointerEvents = 'auto';
         document.querySelector('.dropdown-menu').style.pointerEvents = 'auto';
         document.querySelector('.padlock-button').style.display = 'none';
     } else {
-        // Si le mot de passe n'a pas encore été saisi correctement, bloquez les boutons et le menu
+        // block
         document.querySelector('.buttons-container').style.pointerEvents = 'none';
         document.querySelector('.dropdown-menu').style.pointerEvents = 'none';
     }
@@ -167,17 +163,16 @@
 
     document.getElementById('submit-password').addEventListener('click', function() {
         const passwordInput = document.getElementById('password').value;
-        const crypto = window.crypto || window.msCrypto; // Pour les anciens navigateurs
+        const crypto = window.crypto || window.msCrypto; 
         if (crypto && crypto.subtle) {
             crypto.subtle.digest('SHA-256', new TextEncoder().encode(passwordInput)).then(function(hash) {
-                // Convertir le résultat en chaîne hexadécimale
+                
                 const hashArray = Array.from(new Uint8Array(hash));
                 const hashHex = hashArray.map(byte => byte.toString(16).toUpperCase().padStart(2, '0')).join('');
-                
-                // Log pour déboguer
-                console.log('Password Entered:', passwordInput);
-                console.log('Hash Computed:', hashHex);
-                console.log('Expected Hash:', hashedPassword);
+
+                //console.log('Password Entered:', passwordInput);
+                //console.log('Hash Computed:', hashHex);
+                //console.log('Expected Hash:', hashedPassword);
 
                 // Comparer le hachage avec celui du mot de passe
                 if (hashHex === hashedPassword) {
@@ -185,7 +180,7 @@
                     document.querySelector('.password-form').style.display = 'none';
                     document.querySelector('.buttons-container').style.pointerEvents = 'auto';
                     document.querySelector('.dropdown-menu').style.pointerEvents = 'auto';
-                    document.querySelector('.padlock-button').style.display = 'none'; // Cachez le cadenas
+                    document.querySelector('.padlock-button').style.display = 'none'; 
                 } else {
                     alert('Mot de passe incorrect');
                 }
