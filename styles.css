@@ -140,7 +140,7 @@ html, body {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 10vh); /* Prend tout l'espace disponible sous la bannière */
-    padding: 20px;
+    padding: 00px;
     position: relative;
     background-image: url('Fond.jpg');
     background-size: cover;
@@ -165,7 +165,7 @@ html, body {
     margin-bottom: 0px;
     color: #ba9991;
     font-family: 'Great Vibes', cursive;
-    font-size: 30px;
+    font-size: 25px;
     z-index: 2;
     text-align: center;
 }
@@ -208,14 +208,15 @@ html, body {
 .bottom-container {
     position: fixed; /* Reste en bas de la page */
     bottom: 20px; /* Marge à partir du bas de la page */
-    left: 0;
-    right: 0; /* Élargit le conteneur pour s'étendre sur toute la largeur */
-    display: flex; /* Utilise flexbox pour l'alignement */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    display: flex; /* Utilise flexbox pour l'alignement sur grands écrans */
     justify-content: space-between; /* Espacement entre les éléments */
+    width: 100%; /* Prend toute la largeur */
+    max-width: 600px; /* Limite la largeur pour l'esthétique sur grands écrans */
     padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
     z-index: 1000; /* Assure que le conteneur est au-dessus des autres éléments */
 }
-
 
 
 /* Compte à rebours */
@@ -391,16 +392,19 @@ video {
         width: 120px;
         height: 120px;
     }
-
-    .bottom-container {
-        display: grid; /* Utilise grid sur petits écrans */
-        grid-template-columns: 1fr; /* Une seule colonne */
-        align-items: center; /* Centre verticalement les éléments */
+    
+     .bottom-container {
+        flex-direction: column; /* Passe en colonne sur petits écrans */
+        align-items: center; /* Centre horizontalement les enfants */
         bottom: 10px; /* Ajuste la marge du bas */
     }
 
     .bottom-left-button {
-        margin-bottom: 10px; /* Marge entre le bouton et le compte à rebours */
+        margin-bottom: 00px; /* Marge entre le bouton et le compte à rebours */
+        width: 150px;
+        text-align: center; /* Centre le texte à l'intérieur du bouton */
+        white-space: normal; /* Permet au texte de passer à la ligne */ 
+        font-size: 1em;
     }   
 
     .countdown {
