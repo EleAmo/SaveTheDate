@@ -393,13 +393,14 @@ video {
     }
 
     .bottom-container {
-        flex-direction: column; /* Passe en colonne sur petits écrans */
-        align-items: center; /* Centre horizontalement les enfants */
+        display: grid; /* Utilise grid sur petits écrans */
+        grid-template-columns: 1fr; /* Une seule colonne */
+        align-items: center; /* Centre verticalement les éléments */
         bottom: 10px; /* Ajuste la marge du bas */
     }
 
     .bottom-left-button {
-        margin-bottom: 30px; /* Marge entre le bouton et le compte à rebours */
+        margin-bottom: 10px; /* Marge entre le bouton et le compte à rebours */
     }   
 
     .countdown {
